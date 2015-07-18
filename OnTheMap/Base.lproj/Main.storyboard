@@ -332,7 +332,7 @@
         <!--Map-->
         <scene sceneID="HuI-CF-Ipb">
             <objects>
-                <viewController id="9Bv-Z4-Q3Z" sceneMemberID="viewController">
+                <viewController id="9Bv-Z4-Q3Z" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="19V-co-2ef"/>
                         <viewControllerLayoutGuide type="bottom" id="AiD-eh-1sp"/>
@@ -362,7 +362,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="eMk-9b-PBp"/>
                     <connections>
-                        <outlet property="mapView" destination="WQ9-ke-KVe" id="Tfn-5j-Cvp"/>
+                        <outlet property="mapView" destination="WQ9-ke-KVe" id="SOk-iE-Obq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qew-1Q-ia2" userLabel="First Responder" sceneMemberID="firstResponder"/>
