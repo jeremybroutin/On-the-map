@@ -343,20 +343,35 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WQ9-ke-KVe">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
-                                </variation>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="WQ9-ke-KVe" secondAttribute="bottom" id="0g3-h6-l12"/>
+                            <constraint firstItem="WQ9-ke-KVe" firstAttribute="leading" secondItem="Q9s-P2-sDZ" secondAttribute="leading" id="6gh-G3-1BN"/>
+                            <constraint firstAttribute="trailing" secondItem="WQ9-ke-KVe" secondAttribute="trailing" id="cHR-iu-7vw"/>
+                            <constraint firstItem="WQ9-ke-KVe" firstAttribute="top" secondItem="Q9s-P2-sDZ" secondAttribute="top" id="j9p-5M-hcx"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="WQ9-ke-KVe"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="0g3-h6-l12"/>
+                                <exclude reference="6gh-G3-1BN"/>
+                                <exclude reference="cHR-iu-7vw"/>
+                                <exclude reference="j9p-5M-hcx"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="WQ9-ke-KVe"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="0g3-h6-l12"/>
+                                <include reference="6gh-G3-1BN"/>
+                                <include reference="cHR-iu-7vw"/>
+                                <include reference="j9p-5M-hcx"/>
                             </mask>
                         </variation>
                     </view>
