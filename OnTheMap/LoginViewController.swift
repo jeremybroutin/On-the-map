@@ -172,8 +172,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
       self.debugTextLabel.text = ""
       self.loginActivityIndicator.stopAnimating()
       self.loginButton.hidden = false
-      let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
-      self.presentViewController(controller, animated: true, completion: nil)
+      self.performSegueWithIdentifier("showMap", sender: self)
+      //let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
+      //self.presentViewController(controller, animated: true, completion: nil)
+      //NB: the two lines above don't allow to reach the MapViewController
       println("login was successful, taking user to MapTabBarCtrller")
     })
   }

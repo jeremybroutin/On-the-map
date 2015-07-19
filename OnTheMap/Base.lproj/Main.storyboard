@@ -9,7 +9,7 @@
         <!--Login View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="vXZ-lx-hvc" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="vXZ-lx-hvc" customClass="LoginViewController" customModule="OnMyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -65,7 +65,7 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWu-Kt-HQo" customClass="BorderedButton" customModule="OnTheMap" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWu-Kt-HQo" customClass="BorderedButton" customModule="OnMyApp" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Bml-Nk-CqH"/>
@@ -304,16 +304,17 @@
                         <outlet property="passwordTextField" destination="yl2-dS-OIj" id="1cS-gm-F3J"/>
                         <outlet property="signupTextLabel" destination="VdC-8J-L5e" id="yE1-La-qZs"/>
                         <outlet property="usernameTextField" destination="RPh-F9-7mb" id="agU-Bp-eAA"/>
+                        <segue destination="uyU-jw-y8a" kind="show" identifier="showMap" id="tIy-SZ-aBU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="564" y="539"/>
         </scene>
-        <!--Item 2-->
+        <!--Table View Controller-->
         <scene sceneID="l4i-hV-Xq8">
             <objects>
-                <viewController id="HwT-SP-cvq" sceneMemberID="viewController">
+                <viewController id="HwT-SP-cvq" customClass="TableViewController" customModule="OnMyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gQ0-eX-3x7"/>
                         <viewControllerLayoutGuide type="bottom" id="eM9-RQ-JSL"/>
@@ -321,9 +322,59 @@
                     <view key="view" contentMode="scaleToFill" id="kPd-vg-d94">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Vb9-2u-dSA">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customCell" textLabel="XSL-Th-7kg" detailTextLabel="LJN-4m-HJR" style="IBUITableViewCellStyleSubtitle" id="Zok-eK-b44">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zok-eK-b44" id="W6L-LD-Hcq">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XSL-Th-7kg">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact">
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LJN-4m-HJR">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.098039224743843079" green="0.57647061347961426" blue="0.98431378602981567" alpha="1" colorSpace="deviceRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact">
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                                </variation>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Vb9-2u-dSA"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Vb9-2u-dSA"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="1k1-qi-P3A"/>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="1k1-qi-P3A"/>
+                    <connections>
+                        <outlet property="tableView" destination="Vb9-2u-dSA" id="R2c-9C-pPE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OrR-Kp-tfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -332,7 +383,7 @@
         <!--Map-->
         <scene sceneID="HuI-CF-Ipb">
             <objects>
-                <viewController id="9Bv-Z4-Q3Z" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9Bv-Z4-Q3Z" customClass="MapViewController" customModule="OnMyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="19V-co-2ef"/>
                         <viewControllerLayoutGuide type="bottom" id="AiD-eh-1sp"/>
@@ -347,10 +398,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="WQ9-ke-KVe" secondAttribute="bottom" id="0g3-h6-l12"/>
+                            <constraint firstAttribute="bottom" secondItem="WQ9-ke-KVe" secondAttribute="bottom" id="0g3-h6-l12">
+                                <variation key="widthClass=compact" constant="49"/>
+                            </constraint>
                             <constraint firstItem="WQ9-ke-KVe" firstAttribute="leading" secondItem="Q9s-P2-sDZ" secondAttribute="leading" id="6gh-G3-1BN"/>
                             <constraint firstAttribute="trailing" secondItem="WQ9-ke-KVe" secondAttribute="trailing" id="cHR-iu-7vw"/>
-                            <constraint firstItem="WQ9-ke-KVe" firstAttribute="top" secondItem="Q9s-P2-sDZ" secondAttribute="top" id="j9p-5M-hcx"/>
+                            <constraint firstItem="WQ9-ke-KVe" firstAttribute="top" secondItem="Q9s-P2-sDZ" secondAttribute="top" id="j9p-5M-hcx">
+                                <variation key="widthClass=compact" constant="64"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -375,7 +430,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="eMk-9b-PBp"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="Map" id="eMk-9b-PBp"/>
                     <connections>
                         <outlet property="mapView" destination="WQ9-ke-KVe" id="SOk-iE-Obq"/>
                     </connections>
@@ -423,5 +478,6 @@
     </scenes>
     <resources>
         <image name="LoginIcon" width="150" height="150"/>
+        <image name="Map" width="25" height="25"/>
     </resources>
 </document>

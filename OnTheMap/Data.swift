@@ -24,6 +24,9 @@ class Data: NSObject {
   // Facebook data
   var fbAccessToken: String!
   
+  // Parse data
+  var studentsLocations: [StudentLocation]!
+  
   // MARK: - Shared Instance
   class func sharedInstance() -> Data {
     struct Singleton {
