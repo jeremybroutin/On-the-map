@@ -141,8 +141,7 @@
 				E3318DBB1B56883F00E58624 /* LaunchScreen.xib */,
 				E3318DB01B56883F00E58624 /* Supporting Files */,
 			);
-			name = OnMyMap;
-			path = OnTheMap;
+			path = OnMyMap;
 			sourceTree = "<group>";
 		};
 		E3318DB01B56883F00E58624 /* Supporting Files */ = {
@@ -159,8 +158,7 @@
 				E3318DC81B56883F00E58624 /* OnMyMapTests.swift */,
 				E3318DC61B56883F00E58624 /* Supporting Files */,
 			);
-			name = OnMyMapTests;
-			path = OnTheMapTests;
+			path = OnMyMapTests;
 			sourceTree = "<group>";
 		};
 		E3318DC61B56883F00E58624 /* Supporting Files */ = {
