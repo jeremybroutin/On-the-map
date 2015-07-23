@@ -70,7 +70,7 @@ extension UdacityAPIClient {
     
   }
   
-  /*   GET USER ID METHOD TO QUERY UDACITY SERVER  */
+  /*   GETUSERID METHOD TO QUERY UDACITY SERVER  */
   
   func getUserID(jsonBody: [String: AnyObject], completionHandler: (userID: String?, error: NSError?) -> Void) {
     
@@ -81,7 +81,6 @@ extension UdacityAPIClient {
       // Case 1: download error
       if let error = downloadError {
         completionHandler(userID: nil, error: NSError(domain: "getUserID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Network Error"]))
-        println("Could not complete the request \(error)")
       }
         // Case 2: download successful
       else {
@@ -100,13 +99,90 @@ extension UdacityAPIClient {
             }
             else {
               completionHandler(userID: nil, error: NSError(domain: "getUserID", code: 3, userInfo: [NSLocalizedDescriptionKey:"Could not find user ID"]))
-              println("Could not find key in \(account)")
             }
           }
           else {
             completionHandler(userID: nil, error: NSError(domain: "getUserID", code: 2, userInfo: [NSLocalizedDescriptionKey: "Could not find account"]))
-            println("Could not find account in \(JSONResult)")
           }
+        }
+      }
+    }
+  }
+  
+  /*   ACCESS USER DATA FOR POSTING  */
+  
+  func getUserData(completionHandler: (error: NSError?) -> Void){
+    
+    // Make the request using taskForPost method defined in UdacityAPIClient
+    let task = self.taskForGETMethod(UdacityAPIClient.Methods.UserData, userID: Data.sharedInstance().userID!) { JSONResult, downloadError in
+      
+      // Set the completion handler accordingly
+      // Case 1: download error
+      if let error = downloadError {
+        println("erro task for get method: user data")
+        completionHandler(error: NSError(domain: "GetUserData", code: 0, userInfo: [NSLocalizedDescriptionKey: "Network Error"]))
+      }
+      // Case 2: download successful
+      else {
+        println("success with task for get method: user data.")
+        // check for the user data and grab the last name
+        if let user = JSONResult.valueForKey(JSONResponseKeys.User) as? NSDictionary {
+          if let userLastName = user.valueForKey(JSONResponseKeys.UserLastName) as? String {
+            // store the user last name in our data
+            Data.sharedInstance().userLastName = userLastName
+            
+            // then check for the first name
+            if let userFirstName = user.valueForKey(JSONResponseKeys.UserFirstName) as? String {
+              Data.sharedInstance().userFirstName = userFirstName
+              //set the completion handler
+              completionHandler(error: nil)
+              //debug
+              println("get user data success")
+            }
+            else {
+              println("couldn't find first name in \(user)")
+              completionHandler(error: NSError(domain: "GetUserData", code: 2, userInfo: [NSLocalizedDescriptionKey: "Parsing error for first_name in \(user)"]))
+            }
+          }
+          else {
+            println("couldn't find last name in \(user)")
+            completionHandler(error: NSError(domain: "GetUserData", code: 2, userInfo: [NSLocalizedDescriptionKey: "Parsing error for last_name in \(user)"]))
+          }
+        }
+        else {
+          println("couldn't find user \(JSONResult)")
+          completionHandler(error: NSError(domain: "GetUserData", code: 2, userInfo: [NSLocalizedDescriptionKey: "Parsing error for user in \(JSONResult)"]))
+        }
+      }
+    }
+  }
+  
+  /* LOGOUT UDACITY SESSION */
+  func logoutFromUdacity(completionHandler: ((success: Bool, error: NSError?) -> Void)) {
+    
+    // 1- Specify parameters
+    let method = Methods.Session
+    
+    // 2- Make the request using taskfordelete method
+    let task = self.taskForDELETEMethod(method) { JSONResult, downloadError in
+      
+      // Set the completion handler accordingly
+      // Case 1: download error
+      if let error = downloadError {
+        completionHandler(success: false, error: NSError(domain: "LogoutFromUdacity", code: 0, userInfo: [NSLocalizedDescriptionKey: "Network Error"]))
+      }
+      // Case 2: download successful
+      else {
+        if let sessionDictioanry = JSONResult.valueForKey(JSONResponseKeys.Session) as? NSDictionary {
+          if let id = sessionDictioanry.valueForKey(JSONResponseKeys.ID) as? String {
+            completionHandler(success: true, error: nil)
+            
+          } else {
+            completionHandler(success: false, error: NSError(domain: "LogoutFromUdacity", code: 1, userInfo: [NSLocalizedDescriptionKey: "Parsing error for id"]))
+          }
+          
+        } else {
+          completionHandler(success: false, error: NSError(domain: "LogoutFromUdacity", code: 2, userInfo: [NSLocalizedDescriptionKey: "Parsing error for session"]))
         }
       }
     }

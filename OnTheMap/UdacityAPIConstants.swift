@@ -18,7 +18,7 @@ extension UdacityAPIClient {
   //Methods
   struct Methods {
     static let Session = "session"
-    static let PublicData = "users"
+    static let UserData = "users/"
   }
   
   //JSON Body Keys

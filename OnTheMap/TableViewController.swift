@@ -12,19 +12,28 @@ import UIKit
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var refreshActivityIndicator: UIActivityIndicatorView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     tableView.delegate = self
     tableView.dataSource = self
+    
+    //set the navigation bar
+    NavigationViewController.sharedInstance().setNavBar(self)
   }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    
+    refreshActivityIndicator.stopAnimating()
+    refreshActivityIndicator.hidden = true
+    tableView.hidden = false
     tableView.reloadData()
   }
+  
+  
+  // MARK: - UITableViewDatSource
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return Data.sharedInstance().studentsLocations.count

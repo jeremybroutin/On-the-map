@@ -173,10 +173,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
       self.loginActivityIndicator.stopAnimating()
       self.loginButton.hidden = false
       self.performSegueWithIdentifier("showMap", sender: self)
-      //let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
-      //self.presentViewController(controller, animated: true, completion: nil)
-      //NB: the two lines above don't allow to reach the MapViewController
-      println("login was successful, taking user to MapTabBarCtrller")
+      
+      //reset username and password to empty string
+      //this makes sure the fields are empty when a user logs out
+      self.usernameTextField.text = ""
+      self.passwordTextField.text = ""
     })
   }
   

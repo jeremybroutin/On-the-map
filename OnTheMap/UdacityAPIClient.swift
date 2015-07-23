@@ -57,6 +57,79 @@ class UdacityAPIClient: NSObject {
     
   }
   
+  // MARK: - Task for GET method
+  func taskForGETMethod(method: String, userID: String, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    
+    // 1- Set the parameters
+    //Defined in the userID argument
+    
+    // 2- Build the url
+    let urlString = Constants.baseSecureURLString + method + userID
+    let url = NSURL(string: urlString)!
+    
+    // 3- Configure the request
+    let request = NSMutableURLRequest(URL: url)
+
+    // 4- Make the request
+    let task = session.dataTaskWithRequest(request) {data, response, downloadError in
+      
+      // 5&6- Parse and use the data
+      if let error = downloadError {
+        let newError = UdacityAPIClient.errorForData(data, response: response, error: error)
+        completionHandler(result: nil, error: newError)
+      } else {
+        UdacityAPIClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+      }
+    }
+    
+    // 7- Start the request
+    task.resume()
+    
+    return task
+  }
+  
+  // MARK: - Task for DELETE method
+  func taskForDELETEMethod(mehod: String, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    
+    // 1- Set the parameters
+    // No parameters needed
+    
+    // 2- Build the url
+    let urlString = Constants.baseSecureURLString + mehod
+    let url = NSURL(string: urlString)!
+    
+    // 3- Configure the request
+    let request = NSMutableURLRequest(URL: url)
+    request.HTTPMethod = "DELETE"
+    var xsrfCookie: NSHTTPCookie? = nil
+    let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+    for cookie in sharedCookieStorage.cookies as! [NSHTTPCookie] {
+      if cookie.name == "XSRF-TOKEN" {
+        xsrfCookie = cookie
+      }
+    }
+    if let xsrfCookie = xsrfCookie {
+      request.addValue(xsrfCookie.value!, forHTTPHeaderField: "X-XSRF-Token")
+    }
+    
+     // 4- Make the request
+    let task = session.dataTaskWithRequest(request) { data, response, downloadError in
+      
+      // 5&6- Parse and use the data
+      if let error = downloadError {
+        let newError = UdacityAPIClient.errorForData(data, response: response, error: error)
+        completionHandler(result: nil, error: newError)
+      } else {
+        UdacityAPIClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+      }
+    }
+    
+    // 7- Start the request
+    task.resume()
+    
+    return task
+  }
+  
   // MARK: - Shared Instance
   class func sharedInstance() -> UdacityAPIClient {
     struct Singleton {

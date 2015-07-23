@@ -26,6 +26,10 @@ class Data: NSObject {
   
   // Parse data
   var studentsLocations: [StudentLocation]!
+  var objectID: String!
+  var mapString: String!
+  var mediaURL: String!
+  var region: MKCoordinateRegion!
   
   // MARK: - Shared Instance
   class func sharedInstance() -> Data {

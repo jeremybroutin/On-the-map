@@ -13,10 +13,14 @@ import UIKit
 class MapViewController: UIViewController, MKMapViewDelegate {
   
   @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var refreshActivityIndicator: UIActivityIndicatorView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     mapView.delegate = self
+    
+    //set nav bar using the dedicated class
+    NavigationViewController.sharedInstance().setNavBar(self)
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -39,12 +43,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             //add annotations to the mapView object
             self.mapView.addAnnotations(annotations)
+            
+            self.refreshActivityIndicator.stopAnimating()
+            self.refreshActivityIndicator.hidden = true
+            self.mapView.hidden = false
           }
         }
         // scenario: studentsLocations doesn't exist
         else {
           if let error = error {
             dispatch_async(dispatch_get_main_queue()){
+              self.refreshActivityIndicator.stopAnimating()
+              self.refreshActivityIndicator.hidden = true
+              self.mapView.hidden = false
               self.dataFailure(error)
             }
           }
@@ -54,12 +65,21 @@ class MapViewController: UIViewController, MKMapViewDelegate {
       else {
         if let error = error {
           dispatch_async(dispatch_get_main_queue()){
+            self.refreshActivityIndicator.stopAnimating()
+            self.refreshActivityIndicator.hidden = true
+            self.mapView.hidden = false
             self.dataFailure(error)
           }
         }
       }
     }
   }
+  
+  // Helper: Navigation functions
+  
+
+  
+
   
   // Helper function to handle getStudentsLocation failure
   func dataFailure(error: NSError?) {

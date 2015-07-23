@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E3318DAC1B56883F00E58624"
-               BuildableName = "OnMyApp.app"
-               BlueprintName = "OnMyApp"
-               ReferencedContainer = "container:OnMyApp.xcodeproj">
+               BuildableName = "OnMyMap.app"
+               BlueprintName = "OnMyMap"
+               ReferencedContainer = "container:OnMyMap.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E3318DC11B56883F00E58624"
-               BuildableName = "OnMyAppTests.xctest"
-               BlueprintName = "OnMyAppTests"
-               ReferencedContainer = "container:OnMyApp.xcodeproj">
+               BuildableName = "OnMyMapTests.xctest"
+               BlueprintName = "OnMyMapTests"
+               ReferencedContainer = "container:OnMyMap.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E3318DC11B56883F00E58624"
-               BuildableName = "OnMyAppTests.xctest"
-               BlueprintName = "OnMyAppTests"
-               ReferencedContainer = "container:OnMyApp.xcodeproj">
+               BuildableName = "OnMyMapTests.xctest"
+               BlueprintName = "OnMyMapTests"
+               ReferencedContainer = "container:OnMyMap.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3318DAC1B56883F00E58624"
-            BuildableName = "OnMyApp.app"
-            BlueprintName = "OnMyApp"
-            ReferencedContainer = "container:OnMyApp.xcodeproj">
+            BuildableName = "OnMyMap.app"
+            BlueprintName = "OnMyMap"
+            ReferencedContainer = "container:OnMyMap.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3318DAC1B56883F00E58624"
-            BuildableName = "OnMyApp.app"
-            BlueprintName = "OnMyApp"
-            ReferencedContainer = "container:OnMyApp.xcodeproj">
+            BuildableName = "OnMyMap.app"
+            BlueprintName = "OnMyMap"
+            ReferencedContainer = "container:OnMyMap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3318DAC1B56883F00E58624"
-            BuildableName = "OnMyApp.app"
-            BlueprintName = "OnMyApp"
-            ReferencedContainer = "container:OnMyApp.xcodeproj">
+            BuildableName = "OnMyMap.app"
+            BlueprintName = "OnMyMap"
+            ReferencedContainer = "container:OnMyMap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

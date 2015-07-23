@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class OnTheMapTests: XCTestCase {
+class OnMyMapTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
