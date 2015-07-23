@@ -58,14 +58,10 @@ class ParseAPIClient: NSObject {
     
     // 1- Set the parameters
     //Defined in the jsonBody argument
-    //debug
-    println(jsonBody)
     
     // 2- Build the url
     let urlString = Constants.baseSecureURLString + method
     let url = NSURL(string: urlString)!
-    //debug
-    println("request url for post: \(urlString)")
     
     // 3- Configure the request
     let request = NSMutableURLRequest(URL: url)
@@ -82,8 +78,6 @@ class ParseAPIClient: NSObject {
       if let error = downloadError {
         let newError = UdacityAPIClient.errorForData(data, response: response, error: error)
         completionHandler(result: nil, error: newError)
-        //debug
-        println("task for post: task responded with an error")
       }
       else {
         println("task for post: task was successful")
@@ -121,14 +115,11 @@ class ParseAPIClient: NSObject {
   class func parseJSONWithCompletionHandler(data: NSData, completionHandler: (result: AnyObject!, error: NSError?) -> Void) {
     
     var parsingError: NSError? = nil
-    //debug
     let parsedResult: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError)
     
     if let error = parsingError {
-      //debug
       completionHandler(result: nil, error: error)
     } else {
-      //debug
       completionHandler(result: parsedResult, error: nil)
     }
   }

@@ -136,8 +136,6 @@ extension UdacityAPIClient {
               Data.sharedInstance().userFirstName = userFirstName
               //set the completion handler
               completionHandler(error: nil)
-              //debug
-              println("get user data success")
             }
             else {
               println("couldn't find first name in \(user)")

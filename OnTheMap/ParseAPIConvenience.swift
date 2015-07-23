@@ -74,10 +74,9 @@ extension ParseAPIClient {
   func queryStudentLocations(completionHandler: ( success: Bool, data: AnyObject!, error: NSError?) -> Void) {
     
     //1- set method to be used as per Parse's REST API doc
-    let method = "https://api.parse.com/1/classes/StudentLocation?where=%7B%22uniqueKey%22%3A%22" + Data.sharedInstance().userID! + "%22%7D"
+    let method =  ParseAPIClient.Methods.StudentLocation + "?where=%7B%22uniqueKey%22%3A%22" + Data.sharedInstance().userID! + "%22%7D"
     
-    //1bis- set parameters
-    //Note: we need pass an empty parameters constant because the taskForGetMethod we use after requires this argument
+    //1bis- set parameters (we still need it even if empty as the taskForGETMethod is expecting it!)
     let parameters = [
       "" : ""
     ]

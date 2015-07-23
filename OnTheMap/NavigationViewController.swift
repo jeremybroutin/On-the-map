@@ -36,12 +36,70 @@ class NavigationViewController: NSObject, UIAlertViewDelegate {
   // Add a pin
   func checkForExistingLocation() {
     
+    // Query Parse user data to look for existing location(s) (aka object id(s))
+    ParseAPIClient.sharedInstance().queryStudentLocations { success, data, error in
+      
+      // if we have existing locations...
+      if success {
+        // create an alert VC to alert the user
+        
+        //create the alertVC
+        let alertController = UIAlertController(
+          title: "Kaapooooom",
+          message: "Its looks like you already have some location(s) posted. \n By continuing, you might override it.",
+          preferredStyle: .Alert)
+        
+        //create the continue button
+        let continueButton = UIAlertAction(
+          title: "Continue",
+          style: UIAlertActionStyle.Default,
+          handler: { (action: UIAlertAction!) in self.continueToPostLocationVC()}
+        )
+        
+        //create the cancel button
+        let cancelButton = UIAlertAction(
+          title: "Cancel",
+          style: UIAlertActionStyle.Default,
+          handler: { (action: UIAlertAction!) in alertController.dismissViewControllerAnimated(true, completion: nil)}
+        )
+        
+        //add the two actions to the alertController object
+        alertController.addAction(continueButton)
+        alertController.addAction(cancelButton)
+        
+        //present the alertController
+        self.view.presentViewController(alertController, animated: true, completion: nil)
+      }
+        
+        // if we don't have existing locations and no error...
+      else if (!success && error == nil) {
+        // take the user to the PostLocationVC
+        let controller = self.view.storyboard!.instantiateViewControllerWithIdentifier("PostLocationViewController") as! PostLocationViewController
+        self.view.presentViewController(controller, animated: true, completion: nil)
+      }
+        
+        // if we have error...
+      else if let error = error {
+        // present an error alert
+        let title = "Unknown Error"
+        let message = "Sorry about that... please try to close and reopen the app!"
+        let action = "OK"
+        // trigger alert
+        var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: action, style: UIAlertActionStyle.Default, handler: nil))
+        self.view.presentViewController(alert, animated: true, completion: nil)
+      }
+    }
+  }
+  
+
+  // Helper method for getting user data and presenting PostLocVC
+  func continueToPostLocationVC() {
     // Get the user data
     UdacityAPIClient.sharedInstance().getUserData { error in
       if let error = error {
-        dispatch_async(dispatch_get_main_queue()){
-          println("Error getting user data (to be improved)")
-          /*
+        println("Error getting the user data when updating location")
+        dispatch_async(dispatch_get_main_queue()) {
           // set variables
           let title = "Network Error"
           let message = "The app is having troubles to access the data, please verify your Internet connection"
@@ -49,19 +107,21 @@ class NavigationViewController: NSObject, UIAlertViewDelegate {
           // trigger alert
           var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
           alert.addAction(UIAlertAction(title: action, style: UIAlertActionStyle.Default, handler: nil))
-          self.presentViewController(alert, animated: true, completion: nil)
-          */
+          self.view!.presentViewController(alert, animated: true, completion: nil)
         }
       }
       else {
+        println("success getting user data, going to post location vc")
         dispatch_async(dispatch_get_main_queue()){
           let controller = self.view.storyboard!.instantiateViewControllerWithIdentifier("PostLocationViewController") as! PostLocationViewController
           self.view.presentViewController(controller, animated: true, completion: nil)
         }
+        
       }
     }
   }
-  
+
+
   // Refresh data
   func refreshData(){
     /*
