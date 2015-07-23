@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E63A36A9-B68A-4368-90A3-2BDE44444985</string>
+	<key>IDESourceControlProjectName</key>
+	<string>OnMyMap</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>385E3B8578B335FE16CDB16BE61224416F233E55</key>
+		<string>https://github.com/jeremybroutin/OnMyMap.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>OnMyMap.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>385E3B8578B335FE16CDB16BE61224416F233E55</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jeremybroutin/OnMyMap.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>385E3B8578B335FE16CDB16BE61224416F233E55</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>385E3B8578B335FE16CDB16BE61224416F233E55</string>
+			<key>IDESourceControlWCCName</key>
+			<string>OnMyMap</string>
+		</dict>
+	</array>
+</dict>
+</plist>
