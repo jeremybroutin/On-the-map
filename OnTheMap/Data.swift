@@ -30,6 +30,8 @@ class Data: NSObject {
   var mapString: String!
   var mediaURL: String!
   var region: MKCoordinateRegion!
+  var userHasExistingLocation: Bool!
+  var returnedObjectIDs: NSArray!
   
   // MARK: - Shared Instance
   class func sharedInstance() -> Data {
