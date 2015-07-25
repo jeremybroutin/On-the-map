@@ -1,6 +1,6 @@
 //
 //  ParseAPIConstants.swift
-//  OnTheMap
+//  OnMyMap
 //
 //  Created by Jeremy Broutin on 7/19/15.
 //  Copyright (c) 2015 Jeremy Broutin. All rights reserved.
@@ -44,7 +44,10 @@ extension ParseAPIClient {
     
     /* No need to parse DATE and ACL */
     //static let CreatedAt = "createdAt"
-    //static let UpdatedAt = "updatedAt"
+    
+    // we need the updated at for verification when we update student location
+    static let UpdatedAt = "updatedAt"
+    
     //static let ACL = "ACL"
   }
   

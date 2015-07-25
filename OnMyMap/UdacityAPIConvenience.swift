@@ -1,6 +1,6 @@
 //
 //  UdacityAPIConvenience.swift
-//  OnTheMap
+//  OnMyMap
 //
 //  Created by Jeremy Broutin on 7/16/15.
 //  Copyright (c) 2015 Jeremy Broutin. All rights reserved.

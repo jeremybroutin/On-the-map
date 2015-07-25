@@ -24,6 +24,7 @@
 		E3318DDC1B57F58400E58624 /* UdacityAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3318DDB1B57F58400E58624 /* UdacityAPIClient.swift */; };
 		E3318DDE1B57F68C00E58624 /* UdacityAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3318DDD1B57F68C00E58624 /* UdacityAPIConstants.swift */; };
 		E3318DE21B57FDC900E58624 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3318DE11B57FDC900E58624 /* Data.swift */; };
+		E355EEDC1B637F200008DF81 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E355EEDB1B637F200008DF81 /* Default-568h@2x.png */; };
 		E3AE32411B5C0DCD0040A56E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AE32401B5C0DCD0040A56E /* TableViewController.swift */; };
 		E3C7318D1B5FC4D100CCBB37 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C7318C1B5FC4D100CCBB37 /* NavigationViewController.swift */; };
 		E3CE23651B5A9912000642F6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3CE23641B5A9912000642F6 /* FBSDKCoreKit.framework */; };
@@ -63,6 +64,7 @@
 		E3318DDB1B57F58400E58624 /* UdacityAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAPIClient.swift; sourceTree = "<group>"; };
 		E3318DDD1B57F68C00E58624 /* UdacityAPIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAPIConstants.swift; sourceTree = "<group>"; };
 		E3318DE11B57FDC900E58624 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		E355EEDB1B637F200008DF81 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E3AE32401B5C0DCD0040A56E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		E3C7318C1B5FC4D100CCBB37 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		E3CE23641B5A9912000642F6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		E3318DA41B56883F00E58624 = {
 			isa = PBXGroup;
 			children = (
+				E355EEDB1B637F200008DF81 /* Default-568h@2x.png */,
 				E3318DAF1B56883F00E58624 /* OnMyMap */,
 				E3318DC51B56883F00E58624 /* OnMyMapTests */,
 				E3318DAE1B56883F00E58624 /* Products */,
@@ -283,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3318DB81B56883F00E58624 /* Main.storyboard in Resources */,
+				E355EEDC1B637F200008DF81 /* Default-568h@2x.png in Resources */,
 				E3318DBD1B56883F00E58624 /* LaunchScreen.xib in Resources */,
 				E3318DBA1B56883F00E58624 /* Images.xcassets in Resources */,
 			);
@@ -449,7 +453,7 @@
 					"$(inherited)",
 					/Users/jeremybroutin/Documents/FacebookSDK,
 				);
-				INFOPLIST_FILE = OnTheMap/Info.plist;
+				INFOPLIST_FILE = OnMyMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = OnMyMap;
 			};
@@ -464,7 +468,7 @@
 					"$(inherited)",
 					/Users/jeremybroutin/Documents/FacebookSDK,
 				);
-				INFOPLIST_FILE = OnTheMap/Info.plist;
+				INFOPLIST_FILE = OnMyMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = OnMyMap;
 			};
@@ -482,7 +486,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = OnTheMapTests/Info.plist;
+				INFOPLIST_FILE = OnMyMapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = OnMyMapTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OnTheMap.app/OnTheMap";
@@ -497,7 +501,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = OnTheMapTests/Info.plist;
+				INFOPLIST_FILE = OnMyMapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = OnMyMapTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OnTheMap.app/OnTheMap";

@@ -16,15 +16,10 @@ class PostLocationViewController: UIViewController, UITextFieldDelegate, MKMapVi
   @IBOutlet weak var bodyUIView: UIView!
   @IBOutlet weak var locationEntryUIView: UIView!
   @IBOutlet weak var locationEntryTextField: UITextField!
-  
   @IBOutlet weak var headerTextView: UITextView!
-
   @IBOutlet weak var findOnMapButton: BorderedButton!
-
   @IBOutlet weak var linkTextField: UITextField!
-  
   @IBOutlet weak var mapView: MKMapView!
-  
   @IBOutlet weak var cancelButton: UIButton!
   
   override func viewDidLoad() {
@@ -150,7 +145,27 @@ class PostLocationViewController: UIViewController, UITextFieldDelegate, MKMapVi
     }
     
     else if sender.currentTitle == "Submit" {
-      self.submitLocation()
+      // Case 1: no previous location, we create one
+      if !Data.sharedInstance().userHasExistingLocation {
+        self.submitLocation()
+      }
+        // Case 2: existing location, we update it
+      else if (Data.sharedInstance().userHasExistingLocation == true) {
+        self.updateLocation()
+      }
+      // Case 3: if any error, fail gracefully
+      else {
+        dispatch_async(dispatch_get_main_queue()){
+          // set variables
+          let title = "Oups... Error"
+          let message = "Something weird happened, sorry about that! /n Please try again later."
+          let action = "OK"
+          // trigger alert
+          var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+          alert.addAction(UIAlertAction(title: action, style: UIAlertActionStyle.Default, handler: nil))
+          self.presentViewController(alert, animated: true, completion: nil)
+        }
+      }
     }
   }
   
@@ -176,6 +191,39 @@ class PostLocationViewController: UIViewController, UITextFieldDelegate, MKMapVi
           // set variables
           let title = "Congratulations"
           let message = "Your location has been successfully added!"
+          let action = "Return to home page"
+          // trigger alert
+          var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+          alert.addAction(UIAlertAction(title: action, style: UIAlertActionStyle.Default, handler: { action in
+            self.dismissViewControllerAnimated(true, completion: nil)
+          }))
+          self.presentViewController(alert, animated: true, completion: nil)
+        }
+      }
+    }
+  }
+  //Helper function: update existing location
+  func updateLocation() {
+    ParseAPIClient.sharedInstance().updateStudentLocation { result, error in
+      
+      if let error = error {
+        dispatch_async(dispatch_get_main_queue()){
+          // set variables
+          let title = "Network Error"
+          let message = "The app is having troubles to access the data, please verify your Internet connection"
+          let action = "I understand"
+          // trigger alert
+          var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+          alert.addAction(UIAlertAction(title: action, style: UIAlertActionStyle.Default, handler: nil))
+          self.presentViewController(alert, animated: true, completion: nil)
+        }
+      }
+      else {
+        // the submission is successful and we display an alert to take the user back to the HP
+        dispatch_async(dispatch_get_main_queue()){
+          // set variables
+          let title = "Congratulations"
+          let message = "Your location has been successfully updated!"
           let action = "Return to home page"
           // trigger alert
           var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)

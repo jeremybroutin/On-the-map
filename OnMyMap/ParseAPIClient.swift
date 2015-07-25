@@ -1,6 +1,6 @@
 //
 //  ParseAPIClient.swift
-//  OnTheMap
+//  OnMyMap
 //
 //  Created by Jeremy Broutin on 7/19/15.
 //  Copyright (c) 2015 Jeremy Broutin. All rights reserved.
@@ -54,6 +54,7 @@ class ParseAPIClient: NSObject {
   }
   
   // MARK: - task for POST Method
+  
   func taskForPostMethod(method: String, jsonBody: [String:AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
     
     // 1- Set the parameters
@@ -66,8 +67,8 @@ class ParseAPIClient: NSObject {
     // 3- Configure the request
     let request = NSMutableURLRequest(URL: url)
     request.HTTPMethod = "POST"
-    request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-    request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+    request.addValue(Constants.ParseApplicationID, forHTTPHeaderField: "X-Parse-Application-Id")
+    request.addValue(Constants.RESTAPIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
     var jsonifyError: NSError? = nil
     request.HTTPBody = NSJSONSerialization.dataWithJSONObject(jsonBody, options: nil, error: &jsonifyError)
     
@@ -85,12 +86,48 @@ class ParseAPIClient: NSObject {
       }
     }
     
+    // 7- Start the request
+    task.resume()
+    
+    return task
+  }
+  
+  // MARK: - task for PUT method
+  func taskForPUTMethod(method: String, objectID: String, jsonBody: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    
+    // 1- Set the parameters
+    // Defined in the jsonBody argument
+    
+    // 2- Build the url
+    let urlString = Constants.baseSecureURLString + method + "/" + objectID
+    let url = NSURL(string: urlString)!
+    
+    // 3- Configure the request
+    let request = NSMutableURLRequest(URL: url)
+    request.HTTPMethod = "PUT"
+    request.addValue(Constants.ParseApplicationID, forHTTPHeaderField: "X-Parse-Application-Id")
+    request.addValue(Constants.RESTAPIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    var jsonifyError: NSError? = nil
+    request.HTTPBody = NSJSONSerialization.dataWithJSONObject(jsonBody, options: nil, error: &jsonifyError)
+    
+    // 4- Make the request
+    let task = session.dataTaskWithRequest(request) { data, response, downloadError in
+      
+      // 5&6- Parse and use the data
+      if let error = downloadError {
+        let newError = ParseAPIClient.errorForData(data, response: response, error: error)
+        completionHandler(result: nil, error: error)
+        
+      } else {
+        ParseAPIClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+      }
+    }
     
     // 7- Start the request
     task.resume()
     
     return task
-    
   }
   
   // MARK: - Helper functions

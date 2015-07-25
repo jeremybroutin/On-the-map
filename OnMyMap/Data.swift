@@ -1,6 +1,6 @@
 //
 //  Data.swift
-//  OnTheMap
+//  OnMyMap
 //
 //  Created by Jeremy Broutin on 7/16/15.
 //  Copyright (c) 2015 Jeremy Broutin. All rights reserved.
@@ -31,7 +31,6 @@ class Data: NSObject {
   var mediaURL: String!
   var region: MKCoordinateRegion!
   var userHasExistingLocation: Bool!
-  var returnedObjectIDs: NSArray!
   
   // MARK: - Shared Instance
   class func sharedInstance() -> Data {

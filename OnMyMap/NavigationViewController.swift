@@ -37,7 +37,7 @@ class NavigationViewController: NSObject, UIAlertViewDelegate {
   func checkForExistingLocation() {
     
     // Query Parse user data to look for existing location(s) (aka object id(s))
-    ParseAPIClient.sharedInstance().queryStudentLocations { success, data, error in
+    ParseAPIClient.sharedInstance().queryStudentLocation { success, data, error in
       
       // if we have existing locations...
       if success {
@@ -46,7 +46,7 @@ class NavigationViewController: NSObject, UIAlertViewDelegate {
         //create the alertVC
         let alertController = UIAlertController(
           title: "Kaapooooom",
-          message: "Its looks like you already have some location(s) posted. \n By continuing, you might override it.",
+          message: "It looks like you already posted a location previously. \n By continuing, you will overwrite it.",
           preferredStyle: .Alert)
         
         //create the continue button

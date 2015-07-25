@@ -1,6 +1,6 @@
 //
 //  UdacityAPIClient.swift
-//  OnTheMap
+//  OnMYMap
 //
 //  Created by Jeremy Broutin on 7/16/15.
 //  Copyright (c) 2015 Jeremy Broutin. All rights reserved.
@@ -48,7 +48,6 @@ class UdacityAPIClient: NSObject {
         UdacityAPIClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
       }
     }
-    
     
     // 7- Start the request
     task.resume()
