@@ -27,9 +27,9 @@
 		E355EEDC1B637F200008DF81 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E355EEDB1B637F200008DF81 /* Default-568h@2x.png */; };
 		E3AE32411B5C0DCD0040A56E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AE32401B5C0DCD0040A56E /* TableViewController.swift */; };
 		E3C7318D1B5FC4D100CCBB37 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C7318C1B5FC4D100CCBB37 /* NavigationViewController.swift */; };
-		E3CE23651B5A9912000642F6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3CE23641B5A9912000642F6 /* FBSDKCoreKit.framework */; };
-		E3CE23671B5A9938000642F6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3CE23661B5A9938000642F6 /* FBSDKLoginKit.framework */; };
 		E3CE23691B5AA71D000642F6 /* UdacityAPIConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CE23681B5AA71D000642F6 /* UdacityAPIConvenience.swift */; };
+		E3F8EDD41B657E5400AF59D6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F8EDD31B657E5400AF59D6 /* FBSDKCoreKit.framework */; };
+		E3F8EDD61B657E5F00AF59D6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F8EDD51B657E5F00AF59D6 /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,9 +67,9 @@
 		E355EEDB1B637F200008DF81 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E3AE32401B5C0DCD0040A56E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		E3C7318C1B5FC4D100CCBB37 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
-		E3CE23641B5A9912000642F6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		E3CE23661B5A9938000642F6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		E3CE23681B5AA71D000642F6 /* UdacityAPIConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAPIConvenience.swift; sourceTree = "<group>"; };
+		E3F8EDD31B657E5400AF59D6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		E3F8EDD51B657E5F00AF59D6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3CE23671B5A9938000642F6 /* FBSDKLoginKit.framework in Frameworks */,
-				E3CE23651B5A9912000642F6 /* FBSDKCoreKit.framework in Frameworks */,
+				E3F8EDD61B657E5F00AF59D6 /* FBSDKLoginKit.framework in Frameworks */,
+				E3F8EDD41B657E5400AF59D6 /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,8 +134,6 @@
 		E3318DAF1B56883F00E58624 /* OnMyMap */ = {
 			isa = PBXGroup;
 			children = (
-				E3CE23661B5A9938000642F6 /* FBSDKLoginKit.framework */,
-				E3CE23641B5A9912000642F6 /* FBSDKCoreKit.framework */,
 				E3318DD21B56889700E58624 /* Model */,
 				E3318DD31B56889F00E58624 /* View */,
 				E3318DD41B5688A400E58624 /* Controller */,
@@ -175,6 +173,8 @@
 		E3318DD21B56889700E58624 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E3F8EDD51B657E5F00AF59D6 /* FBSDKLoginKit.framework */,
+				E3F8EDD31B657E5400AF59D6 /* FBSDKCoreKit.framework */,
 				E3154F381B5BCE89003641A9 /* ParseClient */,
 				E3154F371B5BCE62003641A9 /* UdacityClient */,
 				E3318DE11B57FDC900E58624 /* Data.swift */,
@@ -452,6 +452,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/jeremybroutin/Documents/FacebookSDK,
+					"$(PROJECT_DIR)/OnMyMap",
 				);
 				INFOPLIST_FILE = OnMyMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -467,6 +468,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/jeremybroutin/Documents/FacebookSDK,
+					"$(PROJECT_DIR)/OnMyMap",
 				);
 				INFOPLIST_FILE = OnMyMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
