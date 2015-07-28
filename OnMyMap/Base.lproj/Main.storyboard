@@ -530,96 +530,92 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcQ-na-KIM" customClass="BorderedButton" customModule="OnMyMap" customModuleProvider="target">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="X8M-yo-KGi">
-                                                <variation key="widthClass=compact" constant="150"/>
-                                            </constraint>
-                                        </constraints>
-                                        <state key="normal" title="Find on the Map">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="X8M-yo-KGi"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="X8M-yo-KGi"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <action selector="findOnMap:" destination="MMh-oR-WX5" eventType="touchUpInside" id="WwQ-zg-tTd"/>
-                                        </connections>
-                                    </button>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="vhb-Pk-Erp">
                                         <rect key="frame" x="-10" y="-10" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="J8Z-qq-rAJ">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                     </mapView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGU-R5-sAS" customClass="BorderedButton" customModule="OnMyMap" customModuleProvider="target">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="155" id="PCD-qL-9VW"/>
+                                        </constraints>
+                                        <state key="normal" title="Find on the Map">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="PCD-qL-9VW"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="PCD-qL-9VW"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="findOnMap:" destination="MMh-oR-WX5" eventType="touchUpInside" id="NVD-Yx-CF1"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="FFN-ty-BpN" secondAttribute="trailing" id="3jc-xX-DK0"/>
-                                    <constraint firstItem="vhb-Pk-Erp" firstAttribute="centerX" secondItem="EcQ-na-KIM" secondAttribute="centerX" id="4Ae-1c-MIh"/>
-                                    <constraint firstAttribute="bottom" secondItem="EcQ-na-KIM" secondAttribute="bottom" constant="34" id="I9S-02-w7j">
-                                        <variation key="widthClass=compact" constant="35"/>
-                                    </constraint>
+                                    <constraint firstAttribute="bottom" secondItem="gGU-R5-sAS" secondAttribute="bottom" constant="47" id="8Xz-We-239"/>
                                     <constraint firstAttribute="bottom" secondItem="FFN-ty-BpN" secondAttribute="bottom" constant="242" id="LYz-xB-16l"/>
                                     <constraint firstItem="FFN-ty-BpN" firstAttribute="top" secondItem="sUz-EP-hUi" secondAttribute="topMargin" id="M9m-jt-MYJ"/>
-                                    <constraint firstItem="EcQ-na-KIM" firstAttribute="centerX" secondItem="J8Z-qq-rAJ" secondAttribute="centerX" id="R8O-C6-FE9"/>
                                     <constraint firstItem="J8Z-qq-rAJ" firstAttribute="bottom" secondItem="sUz-EP-hUi" secondAttribute="bottomMargin" id="Sf9-v9-esc"/>
                                     <constraint firstItem="J8Z-qq-rAJ" firstAttribute="top" secondItem="sUz-EP-hUi" secondAttribute="top" id="bGt-Kz-dol"/>
+                                    <constraint firstItem="gGU-R5-sAS" firstAttribute="centerX" secondItem="J8Z-qq-rAJ" secondAttribute="centerX" id="e9T-op-gIU"/>
+                                    <constraint firstItem="gGU-R5-sAS" firstAttribute="centerX" secondItem="FFN-ty-BpN" secondAttribute="centerX" id="f22-P9-REj"/>
+                                    <constraint firstItem="gGU-R5-sAS" firstAttribute="centerX" secondItem="vhb-Pk-Erp" secondAttribute="centerX" id="qeZ-HV-MBY"/>
                                     <constraint firstItem="FFN-ty-BpN" firstAttribute="leading" secondItem="sUz-EP-hUi" secondAttribute="leading" id="t4B-kX-uwE"/>
                                     <constraint firstItem="vhb-Pk-Erp" firstAttribute="top" secondItem="FFN-ty-BpN" secondAttribute="bottom" constant="39" id="tsT-Kl-9Cp"/>
-                                    <constraint firstItem="FFN-ty-BpN" firstAttribute="centerX" secondItem="EcQ-na-KIM" secondAttribute="centerX" id="yD0-bC-GSj"/>
                                     <constraint firstItem="J8Z-qq-rAJ" firstAttribute="leading" secondItem="sUz-EP-hUi" secondAttribute="leadingMargin" id="ztf-id-Bzf"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="FFN-ty-BpN"/>
-                                        <exclude reference="EcQ-na-KIM"/>
                                         <exclude reference="vhb-Pk-Erp"/>
                                         <exclude reference="J8Z-qq-rAJ"/>
+                                        <exclude reference="gGU-R5-sAS"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="3jc-xX-DK0"/>
                                         <exclude reference="LYz-xB-16l"/>
                                         <exclude reference="M9m-jt-MYJ"/>
                                         <exclude reference="t4B-kX-uwE"/>
-                                        <exclude reference="yD0-bC-GSj"/>
                                         <exclude reference="Sf9-v9-esc"/>
                                         <exclude reference="bGt-Kz-dol"/>
                                         <exclude reference="ztf-id-Bzf"/>
-                                        <exclude reference="4Ae-1c-MIh"/>
                                         <exclude reference="tsT-Kl-9Cp"/>
-                                        <exclude reference="I9S-02-w7j"/>
-                                        <exclude reference="R8O-C6-FE9"/>
+                                        <exclude reference="8Xz-We-239"/>
+                                        <exclude reference="e9T-op-gIU"/>
+                                        <exclude reference="f22-P9-REj"/>
+                                        <exclude reference="qeZ-HV-MBY"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="FFN-ty-BpN"/>
-                                        <include reference="EcQ-na-KIM"/>
                                         <include reference="vhb-Pk-Erp"/>
                                         <include reference="J8Z-qq-rAJ"/>
+                                        <include reference="gGU-R5-sAS"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="3jc-xX-DK0"/>
                                         <include reference="LYz-xB-16l"/>
                                         <include reference="M9m-jt-MYJ"/>
                                         <include reference="t4B-kX-uwE"/>
-                                        <include reference="yD0-bC-GSj"/>
                                         <include reference="Sf9-v9-esc"/>
                                         <include reference="bGt-Kz-dol"/>
                                         <include reference="ztf-id-Bzf"/>
-                                        <include reference="4Ae-1c-MIh"/>
                                         <include reference="tsT-Kl-9Cp"/>
-                                        <include reference="I9S-02-w7j"/>
-                                        <include reference="R8O-C6-FE9"/>
+                                        <include reference="8Xz-We-239"/>
+                                        <include reference="e9T-op-gIU"/>
+                                        <include reference="f22-P9-REj"/>
+                                        <include reference="qeZ-HV-MBY"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -752,7 +748,7 @@
                     <connections>
                         <outlet property="bodyUIView" destination="sUz-EP-hUi" id="Run-90-A09"/>
                         <outlet property="cancelButton" destination="dvL-q6-vlZ" id="3Iw-Q3-n0i"/>
-                        <outlet property="findOnMapButton" destination="EcQ-na-KIM" id="bax-4C-GyA"/>
+                        <outlet property="findOnMapButton" destination="gGU-R5-sAS" id="2Ti-iF-G8S"/>
                         <outlet property="headerTextView" destination="3GK-9A-6o8" id="Oko-UU-y6x"/>
                         <outlet property="headerUIView" destination="KOn-eb-mSt" id="bB1-4L-KpU"/>
                         <outlet property="linkTextField" destination="28V-z4-4vo" id="FDY-P3-ou3"/>
