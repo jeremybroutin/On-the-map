@@ -530,9 +530,6 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="J8Z-qq-rAJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                    </mapView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcQ-na-KIM" customClass="BorderedButton" customModule="OnMyMap" customModuleProvider="target">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <constraints>
@@ -557,10 +554,17 @@
                                             <action selector="findOnMap:" destination="MMh-oR-WX5" eventType="touchUpInside" id="WwQ-zg-tTd"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="vhb-Pk-Erp">
+                                        <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="J8Z-qq-rAJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    </mapView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="FFN-ty-BpN" secondAttribute="trailing" id="3jc-xX-DK0"/>
+                                    <constraint firstItem="vhb-Pk-Erp" firstAttribute="centerX" secondItem="EcQ-na-KIM" secondAttribute="centerX" id="4Ae-1c-MIh"/>
                                     <constraint firstAttribute="bottom" secondItem="EcQ-na-KIM" secondAttribute="bottom" constant="34" id="I9S-02-w7j">
                                         <variation key="widthClass=compact" constant="35"/>
                                     </constraint>
@@ -570,45 +574,52 @@
                                     <constraint firstItem="J8Z-qq-rAJ" firstAttribute="bottom" secondItem="sUz-EP-hUi" secondAttribute="bottomMargin" id="Sf9-v9-esc"/>
                                     <constraint firstItem="J8Z-qq-rAJ" firstAttribute="top" secondItem="sUz-EP-hUi" secondAttribute="top" id="bGt-Kz-dol"/>
                                     <constraint firstItem="FFN-ty-BpN" firstAttribute="leading" secondItem="sUz-EP-hUi" secondAttribute="leading" id="t4B-kX-uwE"/>
+                                    <constraint firstItem="vhb-Pk-Erp" firstAttribute="top" secondItem="FFN-ty-BpN" secondAttribute="bottom" constant="39" id="tsT-Kl-9Cp"/>
                                     <constraint firstItem="FFN-ty-BpN" firstAttribute="centerX" secondItem="EcQ-na-KIM" secondAttribute="centerX" id="yD0-bC-GSj"/>
                                     <constraint firstItem="J8Z-qq-rAJ" firstAttribute="leading" secondItem="sUz-EP-hUi" secondAttribute="leadingMargin" id="ztf-id-Bzf"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="FFN-ty-BpN"/>
-                                        <exclude reference="J8Z-qq-rAJ"/>
                                         <exclude reference="EcQ-na-KIM"/>
+                                        <exclude reference="vhb-Pk-Erp"/>
+                                        <exclude reference="J8Z-qq-rAJ"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="I9S-02-w7j"/>
-                                        <exclude reference="R8O-C6-FE9"/>
-                                        <exclude reference="Sf9-v9-esc"/>
-                                        <exclude reference="bGt-Kz-dol"/>
-                                        <exclude reference="ztf-id-Bzf"/>
                                         <exclude reference="3jc-xX-DK0"/>
                                         <exclude reference="LYz-xB-16l"/>
                                         <exclude reference="M9m-jt-MYJ"/>
                                         <exclude reference="t4B-kX-uwE"/>
                                         <exclude reference="yD0-bC-GSj"/>
+                                        <exclude reference="Sf9-v9-esc"/>
+                                        <exclude reference="bGt-Kz-dol"/>
+                                        <exclude reference="ztf-id-Bzf"/>
+                                        <exclude reference="4Ae-1c-MIh"/>
+                                        <exclude reference="tsT-Kl-9Cp"/>
+                                        <exclude reference="I9S-02-w7j"/>
+                                        <exclude reference="R8O-C6-FE9"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="FFN-ty-BpN"/>
-                                        <include reference="J8Z-qq-rAJ"/>
                                         <include reference="EcQ-na-KIM"/>
+                                        <include reference="vhb-Pk-Erp"/>
+                                        <include reference="J8Z-qq-rAJ"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="I9S-02-w7j"/>
-                                        <include reference="R8O-C6-FE9"/>
-                                        <include reference="Sf9-v9-esc"/>
-                                        <include reference="bGt-Kz-dol"/>
-                                        <include reference="ztf-id-Bzf"/>
                                         <include reference="3jc-xX-DK0"/>
                                         <include reference="LYz-xB-16l"/>
                                         <include reference="M9m-jt-MYJ"/>
                                         <include reference="t4B-kX-uwE"/>
                                         <include reference="yD0-bC-GSj"/>
+                                        <include reference="Sf9-v9-esc"/>
+                                        <include reference="bGt-Kz-dol"/>
+                                        <include reference="ztf-id-Bzf"/>
+                                        <include reference="4Ae-1c-MIh"/>
+                                        <include reference="tsT-Kl-9Cp"/>
+                                        <include reference="I9S-02-w7j"/>
+                                        <include reference="R8O-C6-FE9"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -745,6 +756,7 @@
                         <outlet property="headerTextView" destination="3GK-9A-6o8" id="Oko-UU-y6x"/>
                         <outlet property="headerUIView" destination="KOn-eb-mSt" id="bB1-4L-KpU"/>
                         <outlet property="linkTextField" destination="28V-z4-4vo" id="FDY-P3-ou3"/>
+                        <outlet property="loadingActivityIndicator" destination="vhb-Pk-Erp" id="ku9-eH-Or6"/>
                         <outlet property="locationEntryTextField" destination="hh8-ef-T3n" id="8XC-XH-dxZ"/>
                         <outlet property="locationEntryUIView" destination="FFN-ty-BpN" id="vex-3Q-PaZ"/>
                         <outlet property="mapView" destination="J8Z-qq-rAJ" id="X32-pS-XQ9"/>

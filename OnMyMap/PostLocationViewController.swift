@@ -21,6 +21,7 @@ class PostLocationViewController: UIViewController, UITextFieldDelegate, MKMapVi
   @IBOutlet weak var linkTextField: UITextField!
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var cancelButton: UIButton!
+  @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -35,6 +36,7 @@ class PostLocationViewController: UIViewController, UITextFieldDelegate, MKMapVi
     
     self.linkTextField.hidden = true
     self.mapView.hidden = true
+    self.loadingActivityIndicator.hidden = true
     
     //Remove the text fields default texts on click
     self.locationEntryTextField.clearsOnBeginEditing = true
@@ -67,6 +69,10 @@ class PostLocationViewController: UIViewController, UITextFieldDelegate, MKMapVi
         //2- if textfield is correct, move on
       else{
         
+        //start the activity indicator while we load the map
+        self.loadingActivityIndicator.hidden = false
+        self.loadingActivityIndicator.startAnimating()
+        
         // set the geocoder object
         // see doc: https://developer.apple.com/library/prerelease/ios/documentation/CoreLocation/Reference/CLGeocoder_class/index.html#//apple_ref/occ/instm/CLGeocoder/geocodeAddressString:completionHandler:
         // note: geocoder will look up placemark information for specified coordoniate values
@@ -79,6 +85,9 @@ class PostLocationViewController: UIViewController, UITextFieldDelegate, MKMapVi
           // throw an error alert if there is an error
           if let error = error {
             dispatch_async(dispatch_get_main_queue()){
+              //stop activity indicator
+              self.loadingActivityIndicator.stopAnimating()
+              
               // set variables
               let title = "Location not found"
               let message = "Make sure you entered a correct location!"
@@ -99,7 +108,7 @@ class PostLocationViewController: UIViewController, UITextFieldDelegate, MKMapVi
               let placemarks = placemarks as! [CLPlacemark]
               
               //use the placemark(s) info to create the necessary region (to center and span the map)
-              // a. create an array of regions (as we might have multiple placemarks)
+              // a. define a region object
               var region: MKCoordinateRegion
               
               // b. loop through each placemark and use its info to create a MKCoordinate object
@@ -122,6 +131,10 @@ class PostLocationViewController: UIViewController, UITextFieldDelegate, MKMapVi
               let annotation = Annotation(firstName: Data.sharedInstance().userFirstName!, lastName: Data.sharedInstance().userLastName!, mediaUrl: nil, lat: Data.sharedInstance().region.center.latitude, lon: Data.sharedInstance().region.center.longitude)
               
               // UPDATE VIEW
+              //stop activity indicator
+              self.loadingActivityIndicator.hidden = false
+              self.loadingActivityIndicator.stopAnimating()
+              
               // now that the data is ready, change the view elements
               self.headerTextView.hidden = true
               self.headerUIView.backgroundColor = UIColor(red: 0.980, green: 0.349, blue: 0.078, alpha: 1.0)
@@ -151,7 +164,24 @@ class PostLocationViewController: UIViewController, UITextFieldDelegate, MKMapVi
       }
         // Case 2: existing location, we update it
       else if (Data.sharedInstance().userHasExistingLocation == true) {
-        self.updateLocation()
+        // make sure the text field is not empty
+        if !self.linkTextField.text.isEmpty {
+          self.updateLocation()
+        }
+        // otherwise throw an error
+        else {
+          dispatch_async(dispatch_get_main_queue()){
+            // set variables
+            let title = "Missing stuff"
+            let message = "Oups, you're missing your pin link!"
+            let action = "Add now"
+            // trigger alert
+            var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: action, style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+          }
+        }
+        
       }
       // Case 3: if any error, fail gracefully
       else {
